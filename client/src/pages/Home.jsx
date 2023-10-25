@@ -1,5 +1,5 @@
-import config from "../config.json";
-const key = config.GIS_API_KEY;
+// import config from "../config.json";
+// const key = config.GIS_API_KEY;
 
 import ArcGISMap from "../components/ArcGISMap.jsx";
 import Navbar from "../components/Navbar";
