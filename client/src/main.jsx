@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import App from "./App.jsx";
 import Splash from "./pages/Splash";
-import SavedBooks from "./pages/SavedBooks";
+import Home from "./pages/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
         element: <Splash />,
       },
       {
-        path: "/saved",
-        element: <SavedBooks />,
+        path: "/home",
+        element: <Home />,
       },
     ],
   },

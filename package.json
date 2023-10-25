@@ -14,5 +14,9 @@
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "arcgis-js-api": "^4.28.1",
+    "dotenv": "^16.3.1"
   }
 }
