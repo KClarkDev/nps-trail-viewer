@@ -12,13 +12,15 @@ export default function Splash() {
 
   return (
     <div className="splash">
-      <h1 className="splashTitle">National Park Hikes</h1>
-      <span className="divider"></span>
-      <p className="splashDescription">
+      <h1 className="splashTitle animated fadeInDown">National Park Hikes</h1>
+      <span className="divider animated fadeInDown"></span>
+      <p className="splashDescription animated fadeInDown">
         Choose the hike that's right for you with this interactive mapping
         application
       </p>
-      <button onClick={handleButtonClick}>View Map</button>
+      <button className="animated fadeInDown" onClick={handleButtonClick}>
+        View Map
+      </button>
       <img className="icon" src={mtnIcon} alt="application icon" />
     </div>
   );
