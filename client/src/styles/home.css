@@ -27,3 +27,11 @@ iframe {
   height: 400;
   margin: "0";
 }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Always displays on top*/
+  height: 65px;
+}
