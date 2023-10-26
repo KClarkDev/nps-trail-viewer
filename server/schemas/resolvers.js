@@ -4,15 +4,12 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   // retrieves a specific user by their username. Includes the user's saved books when returning the data
   Query: {
-    getMe: async (parent, args, context) => {
-      console.log("context.user for getMe:", context.user);
+    getUser: async (parent, args, context) => {
+      console.log("context.user for getUser:", context.user);
       if (context.user) {
-        console.log("Within IF statement in resolvers");
         const userData = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
         );
-        console.log("Here is the user data being returned:");
-        console.log(userData);
         return userData;
       }
 
@@ -25,7 +22,7 @@ const resolvers = {
       // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
       const user = await User.findOne({ email });
 
-      // If there is no user with that email address, return an Authentication error stating so
+      // If there is no user with that email address, return an Authentication error
       if (!user) {
         throw AuthenticationError;
       }
@@ -52,13 +49,12 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
-
-    saveBook: async (parent, args, context) => {
-      console.log("context.user: for saveBook", context.user);
+    saveTrail: async (parent, args, context) => {
+      console.log("context.user: for saveTrail", context.user);
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedBooks: args } },
+          { $addToSet: { savedTrail: args } },
           { new: true }
         );
         console.log(updatedUser);
@@ -68,12 +64,12 @@ const resolvers = {
       throw AuthenticationError;
     },
 
-    removeBook: async (parent, args, context) => {
-      console.log("context.user for removeBook:", context.user);
+    removeTrail: async (parent, args, context) => {
+      console.log("context.user for removeTrail:", context.user);
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedBooks: { bookId: args.bookId } } },
+          { $pull: { savedTrail: { trailId: args.trailId } } },
           { new: true }
         );
         return updatedUser;
