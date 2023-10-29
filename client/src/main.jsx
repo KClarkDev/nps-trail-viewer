@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App.jsx";
 import Splash from "./pages/Splash.jsx";
 import Home from "./pages/Home.jsx";
+import SavedTrails from "./pages/SavedTrails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/my-trails",
+        element: <SavedTrails />,
       },
     ],
   },
