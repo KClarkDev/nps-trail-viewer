@@ -6,7 +6,7 @@ export default function Splash() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    // Navigate to the SavedBooks page when the button is clicked
+    // Navigate to the main page when the button is clicked
     navigate("/home");
   };
 

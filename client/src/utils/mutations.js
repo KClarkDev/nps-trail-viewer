@@ -19,13 +19,9 @@ export const ADD_USER = gql`
       user {
         _id
         email
-        savedBooks {
-          image
-          description
-          bookId
-          authors
-          link
-          title
+        savedTrails {
+          trailName
+          parkName
         }
         username
       }
@@ -33,52 +29,30 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_BOOK = gql`
-  mutation saveBook(
-    $authors: [String]
-    $description: String
-    $bookId: String!
-    $image: String
-    $link: String
-    $title: String!
-  ) {
-    saveBook(
-      authors: $authors
-      description: $description
-      bookId: $bookId
-      image: $image
-      link: $link
-      title: $title
-    ) {
+export const SAVE_TRAIL = gql`
+  mutation saveTrail($trailName: String, $parkName: String) {
+    saveTrail(trailName: $trailName, parkName: $parkName) {
       _id
       username
       email
-      savedBooks {
-        bookId
-        authors
-        description
-        image
-        link
-        title
+      savedTrails {
+        trailName
+        parkName
       }
     }
   }
 `;
 
-export const REMOVE_BOOK = gql`
-  mutation removeBook($bookId: String!) {
-    removeBook(bookId: $bookId) {
+export const REMOVE_Trail = gql`
+  mutation removeTrail($trailId: String!) {
+    removeTrail(trailId: $trailId) {
       _id
       username
       email
-      bookCount
-      savedBooks {
-        bookId
-        authors
-        description
-        image
-        link
-        title
+      savedTrails {
+        trailId
+        trailName
+        parkName
       }
     }
   }

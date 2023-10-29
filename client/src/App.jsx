@@ -36,11 +36,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <TrailProvider>
-        <div className="flex-column justify-center align-center min-100-vh">
-          <Outlet />
-        </div>
-      </TrailProvider>
+      {/* <TrailProvider> */}
+      <div className="flex-column justify-center align-center min-100-vh">
+        <Outlet />
+      </div>
+      {/* </TrailProvider> */}
     </ApolloProvider>
   );
 }

@@ -12,7 +12,7 @@ export default function TrailProvider(props) {
   useEffect(() => {
     loadModules(["esri/layers/FeatureLayer"]).then(([FeatureLayer]) => {
       const trails = new FeatureLayer({
-        url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Trails/FeatureServer",
+        url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_Hikes/FeatureServer",
       });
 
       setTrails(trails);

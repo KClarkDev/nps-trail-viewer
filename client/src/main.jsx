@@ -1,9 +1,9 @@
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import App from "./App.jsx";
-import Splash from "./pages/Splash";
+import Splash from "./pages/Splash.jsx";
 import Home from "./pages/Home.jsx";
 
 const router = createBrowserRouter([
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Splash />,
+        element: <Splash />, // Render Splash as the default route
       },
       {
         path: "/home",
