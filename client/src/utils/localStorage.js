@@ -1,30 +1,32 @@
-export const getSavedBookIds = () => {
-  const savedBookIds = localStorage.getItem('saved_books')
-    ? JSON.parse(localStorage.getItem('saved_books'))
+export const getSavedTrailIds = () => {
+  const savedTrailIds = localStorage.getItem("savedTrails")
+    ? JSON.parse(localStorage.getItem("savedTrails"))
     : [];
 
   return savedBookIds;
 };
 
-export const saveBookIds = (bookIdArr) => {
-  if (bookIdArr.length) {
-    localStorage.setItem('saved_books', JSON.stringify(bookIdArr));
+export const saveTrailIds = (trailIdArr) => {
+  if (trailIdArr.length) {
+    localStorage.setItem("savedTrails", JSON.stringify(trailIdArr));
   } else {
-    localStorage.removeItem('saved_books');
+    localStorage.removeItem("savedTrails");
   }
 };
 
-export const removeBookId = (bookId) => {
-  const savedBookIds = localStorage.getItem('saved_books')
-    ? JSON.parse(localStorage.getItem('saved_books'))
+export const removeTrailId = (trailId) => {
+  const savedTrailIds = localStorage.getItem("savedTrails")
+    ? JSON.parse(localStorage.getItem("savedTrails"))
     : null;
 
-  if (!savedBookIds) {
+  if (!savedTrailIds) {
     return false;
   }
 
-  const updatedSavedBookIds = savedBookIds?.filter((savedBookId) => savedBookId !== bookId);
-  localStorage.setItem('saved_books', JSON.stringify(updatedSavedBookIds));
+  const updatedSavedTrailIds = savedTrailIds?.filter(
+    (savedTrailId) => savedTrailId !== trailId
+  );
+  localStorage.setItem("savedTrails", JSON.stringify(updatedSavedTrailIds));
 
   return true;
 };

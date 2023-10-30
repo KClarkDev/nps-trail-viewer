@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
+import mtnIcon from "../assets/mountainIconWhite.png";
 
 import Auth from "../utils/auth";
 
 const AppNavbar = () => {
+  const location = useLocation(); // Get the current location
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
@@ -18,11 +20,19 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar" className="d-flex flex-row-reverse">
             <Nav className="ml-auto d-flex">
-              {/* if user is logged in show saved books and logout */}
-              {Auth.loggedIn() ? (
+              {/* Check if the user is on the Home page */}
+              {location.pathname === "/home" && Auth.loggedIn() ? (
                 <>
-                  <Nav.Link as={Link} to="/my-trails">
-                    My Trails
+                  <Nav.Link as={Link} to="/my-hikes">
+                    My Hikes
+                  </Nav.Link>
+                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                </>
+              ) : /* Check if the user is on the My Hikes page */
+              location.pathname === "/my-hikes" ? (
+                <>
+                  <Nav.Link as={Link} to="/home">
+                    Home
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>

@@ -43,7 +43,7 @@ export const SAVE_TRAIL = gql`
   }
 `;
 
-export const REMOVE_Trail = gql`
+export const REMOVE_TRAIL = gql`
   mutation removeTrail($trailId: String!) {
     removeTrail(trailId: $trailId) {
       _id

@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { loadModules } from "esri-loader";
 import "../styles/menuPanel.css";
 
 const ArcGISMap = () => {
+  const [shenandoahHikesLayer, setShenandoahHikesLayer] = useState(null);
   // used as a ref to reference and access the div element containing the map
   const mapDiv = useRef();
 
@@ -28,18 +29,21 @@ const ArcGISMap = () => {
         url: "https://services6.arcgis.com/cGI8zn9Oo7U9dF6z/arcgis/rest/services/Shenandoah_National_Park_Boundary/FeatureServer",
       });
 
-      const shenandoahTrails = new FeatureLayer({
-        url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Trails/FeatureServer",
-      });
+      // const shenandoahTrails = new FeatureLayer({
+      //   url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Trails/FeatureServer",
+      // });
 
       const shenandoahHikes = new FeatureLayer({
         url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Hikes/FeatureServer",
       });
 
       // Add the feature layer to the map
-      map.add(shenandoahHikes);
       map.add(shenandoahBoundary);
-      map.add(shenandoahTrails);
+      // map.add(shenandoahTrails);
+      map.add(shenandoahHikes);
+      // Set the layers in state
+
+      setShenandoahHikesLayer(shenandoahHikes);
     });
   }, []);
 

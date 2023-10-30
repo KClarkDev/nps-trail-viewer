@@ -12,10 +12,13 @@ export default function TrailProvider(props) {
   useEffect(() => {
     loadModules(["esri/layers/FeatureLayer"]).then(([FeatureLayer]) => {
       const trails = new FeatureLayer({
-        url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_Hikes/FeatureServer",
+        url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Hikes/FeatureServer",
+        outFields: ["*"],
       });
 
       setTrails(trails);
+      console.log("In provider");
+      console.log(trails);
     });
   }, []);
   // The provider component will wrap all other components inside of it that need access to our global state

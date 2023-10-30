@@ -1,0 +1,12 @@
+.hikes-container {
+  position: absolute;
+  top: 65px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: "Figtree", sans-serif;
+  font-weight: bold;
+}
