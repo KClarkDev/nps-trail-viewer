@@ -2,7 +2,7 @@ const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
-  // retrieves a specific user by their username. Includes the user's saved books when returning the data
+  // retrieves a specific user by their username. Includes the user's saved trails when returning the data
   Query: {
     getUser: async (parent, args, context) => {
       console.log("context.user for getUser:", context.user);
@@ -10,6 +10,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
         );
+        console.log(userData);
         return userData;
       }
 

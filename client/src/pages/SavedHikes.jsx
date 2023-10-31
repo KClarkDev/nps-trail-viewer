@@ -6,13 +6,13 @@ import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { removeTrailId } from "../utils/localStorage";
-import { GET_ME } from "../utils/queries";
+import { GET_USER } from "../utils/queries";
 import { REMOVE_TRAIL } from "../utils/mutations";
 
 export default function SavedHikes() {
   // use useQuery hook to make query request
-  const { loading, data } = useQuery(GET_ME);
-  const userData = data?.getMe || {};
+  const { loading, data } = useQuery(GET_USER);
+  const userData = data?.getUser || {};
   console.log("Here's the user data:");
   console.log(userData);
 

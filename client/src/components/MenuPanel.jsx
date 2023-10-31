@@ -49,7 +49,6 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
     );
 
     if (sceneView && selectedFeature) {
-      console.log("Im here");
       // Call a function to zoom to the selected feature
       zoomToFeature(selectedFeature.geometry);
     }
@@ -88,9 +87,9 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
           >
             I completed this hike!
           </button>
-          <button type="button" className="btn btn-dark btn-menu-panel">
+          {/* <button type="button" className="btn btn-dark btn-menu-panel">
             Add this hike to my wishlist
-          </button>
+          </button> */}
         </div>
       )}
     </div>
