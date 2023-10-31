@@ -33,24 +33,37 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
   }, [shenandoahHikesLayer]);
 
   const zoomToFeature = (geometry) => {
+    const extent = new Extent(geometry);
+    console.log("Extent");
+    console.log(extent);
+
     sceneView.goTo({
       target: geometry,
       scale: 10000,
       tilt: 60,
+      speedFactor: 0.5,
     });
   };
 
   const handleDropdownChange = (event) => {
     const selectedName = event.target.value;
+    console.log(`Selected name: ${selectedName}`);
     setSelectedFeature(selectedName);
+    console.log(`The selected feature is ${selectedFeature}`);
+    console.log(typeof selectedFeature);
 
     const selectedFeatureData = featureData.find(
       (feature) => feature.name === selectedName
     );
 
-    if (sceneView && selectedFeature) {
+    console.log(`The selected featureData is:`);
+    console.log(selectedFeatureData);
+
+    if (sceneView && selectedFeatureData) {
+      console.log("In the function");
+      console.log(selectedFeatureData);
       // Call a function to zoom to the selected feature
-      zoomToFeature(selectedFeature.geometry);
+      zoomToFeature(selectedFeatureData.geometry.paths);
     }
   };
 
