@@ -73,7 +73,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedTrail: { trailId: args.trailId } } },
+          { $pull: { savedTrails: { _id: args._id } } },
           { new: true }
         );
         return updatedUser;

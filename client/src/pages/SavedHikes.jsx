@@ -13,26 +13,25 @@ export default function SavedHikes() {
   // use useQuery hook to make query request
   const { loading, data } = useQuery(GET_USER);
   const userData = data?.getUser || {};
-  console.log("Here's the user data:");
+
+  console.log("Here is the userData from GET_USER");
   console.log(userData);
 
   const [removeTrail, { error }] = useMutation(REMOVE_TRAIL);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
-  const handleDeleteTrail = async (trailId) => {
+  const handleDeleteTrail = async (_id) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
       return false;
     }
 
+    console.log(_id);
     try {
-      const { data } = await removeTrail({
-        variables: { trailId: trailId },
+      await removeTrail({
+        variables: { _id: _id },
       });
-
-      // upon success, remove book's id from localStorage
-      removeTrailId(trailId);
     } catch (err) {
       console.error(err);
     }
@@ -64,7 +63,7 @@ export default function SavedHikes() {
 
                     <Button
                       className="btn-block btn-danger"
-                      onClick={() => handleDeleteTrail(trail.trailId)}
+                      onClick={() => handleDeleteTrail(trail._id)}
                     >
                       Remove this hike
                     </Button>

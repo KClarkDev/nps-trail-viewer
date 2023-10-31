@@ -44,13 +44,13 @@ export const SAVE_TRAIL = gql`
 `;
 
 export const REMOVE_TRAIL = gql`
-  mutation removeTrail($trailId: String!) {
-    removeTrail(trailId: $trailId) {
+  mutation removeTrail($_id: ID!) {
+    removeTrail(_id: $_id) {
       _id
       username
       email
       savedTrails {
-        trailId
+        _id
         trailName
         parkName
       }
