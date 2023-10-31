@@ -2,53 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { loadModules } from "esri-loader";
 import "../styles/menuPanel.css";
 
-const ArcGISMap = () => {
-  const [shenandoahHikesLayer, setShenandoahHikesLayer] = useState(null);
+const ArcGISMap = ({ shenandoahHikesLayer, map, sceneView }) => {
   // used as a ref to reference and access the div element containing the map
   const mapDiv = useRef();
+  // const shenandoahBoundary = new FeatureLayer({
+  //   url: "https://services6.arcgis.com/cGI8zn9Oo7U9dF6z/arcgis/rest/services/Shenandoah_National_Park_Boundary/FeatureServer",
+  // });
 
   useEffect(() => {
-    loadModules(
-      ["esri/Map", "esri/views/SceneView", "esri/layers/FeatureLayer"],
-      { css: true }
-    ).then(([Map, SceneView, FeatureLayer]) => {
-      // Create a new map and scene view
-      const map = new Map({
-        basemap: "topo-vector",
-        ground: "world-elevation",
-        spatialReference: {
-          wkid: 4269,
-        },
-      });
-
-      const view = new SceneView({
-        container: mapDiv.current,
-        map: map,
-        zoom: 10,
-        center: [-78.45, 38.47], // long, lat (Shenandoah National Park)
-      });
-
-      const shenandoahBoundary = new FeatureLayer({
-        url: "https://services6.arcgis.com/cGI8zn9Oo7U9dF6z/arcgis/rest/services/Shenandoah_National_Park_Boundary/FeatureServer",
-      });
-
-      // const shenandoahTrails = new FeatureLayer({
-      //   url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Trails/FeatureServer",
-      // });
-
-      const shenandoahHikes = new FeatureLayer({
-        url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Hikes/FeatureServer",
-      });
-
-      // Add the feature layer to the map
-      map.add(shenandoahBoundary);
-      // map.add(shenandoahTrails);
-      map.add(shenandoahHikes);
-      // Set the layers in state
-
-      setShenandoahHikesLayer(shenandoahHikes);
-    });
-  }, []);
+    if (map && sceneView && shenandoahHikesLayer) {
+      sceneView.container = mapDiv.current;
+      sceneView.view = map;
+      // Add the provided layers to the map
+      map.add(shenandoahHikesLayer);
+    }
+  }, [map, sceneView, shenandoahHikesLayer]);
 
   return (
     <div

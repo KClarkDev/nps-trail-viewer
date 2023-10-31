@@ -48,10 +48,10 @@ export default function SavedHikes() {
       <Container className="hikes-container">
         <h2 className="pt-5">
           {userData?.savedTrails?.length
-            ? `Viewing ${userData.savedTrails.length} saved ${
-                userData.savedTrails.length === 1 ? "trail" : "trails"
+            ? `You've completed ${userData.savedTrails.length} ${
+                userData.savedTrails.length === 1 ? "hike" : "hikes"
               }:`
-            : "You have no saved trails!"}
+            : "You have no saved hikes!"}
         </h2>
         <Row>
           {userData?.savedTrails?.map((trail) => {
