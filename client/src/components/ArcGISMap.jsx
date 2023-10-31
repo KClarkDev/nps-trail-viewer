@@ -16,6 +16,9 @@ const ArcGISMap = () => {
       const map = new Map({
         basemap: "topo-vector",
         ground: "world-elevation",
+        spatialReference: {
+          wkid: 4269,
+        },
       });
 
       const view = new SceneView({

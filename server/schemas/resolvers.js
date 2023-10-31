@@ -51,10 +51,13 @@ const resolvers = {
     },
     saveTrail: async (parent, args, context) => {
       console.log("context.user: for saveTrail", context.user);
+      console.log("HERE ARE THE ARGS");
+      console.log(args);
       if (context.user) {
+        const { trailName, parkName } = args;
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedTrail: args } },
+          { $addToSet: { savedTrails: { trailName, parkName } } },
           { new: true }
         );
         console.log(updatedUser);
