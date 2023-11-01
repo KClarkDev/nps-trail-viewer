@@ -131,3 +131,6 @@ dist
 
 # custom
 config.json
+ppt/
+.ppt
+
