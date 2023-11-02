@@ -45,3 +45,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.instruction {
+  text-align: center;
+  padding: 5%;
+}

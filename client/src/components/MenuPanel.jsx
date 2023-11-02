@@ -99,6 +99,10 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
           {notification && <Notification message={notification} />}
         </div>
       )}
+      <p className="instruction">
+        Click on a trail in the map to display hike details and download the
+        trail map
+      </p>
     </div>
   );
 };
