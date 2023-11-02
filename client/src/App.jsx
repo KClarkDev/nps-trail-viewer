@@ -7,7 +7,6 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
-import TrailProvider from "./utils/trailContext.jsx";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -36,11 +35,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      {/* <TrailProvider> */}
       <div className="flex-column justify-center align-center min-100-vh">
         <Outlet />
       </div>
-      {/* </TrailProvider> */}
     </ApolloProvider>
   );
 }

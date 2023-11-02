@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { loadModules } from "esri-loader";
-import { Extent } from "@arcgis/core/geometry";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { SAVE_TRAIL } from "../utils/mutations";
+import Notification from "./Notification";
 
 import "../styles/menuPanel.css";
 
 const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
   const [featureData, setFeatureData] = useState([]);
   const [selectedFeature, setSelectedFeature] = useState("");
+  const [notification, setNotification] = useState("");
   const [saveTrail, { data, loading, error }] = useMutation(SAVE_TRAIL);
 
   useEffect(() => {
@@ -26,6 +27,9 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
             geometry: feature.geometry.toJSON(),
           }));
 
+          // Sort the featureData array alphabetically
+          featuresData.sort((a, b) => a.name.localeCompare(b.name));
+
           setFeatureData(featuresData);
         });
       });
@@ -33,8 +37,6 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
   }, [shenandoahHikesLayer]);
 
   const zoomToFeature = (geometry) => {
-    const extent = new Extent(geometry);
-
     sceneView.goTo({
       target: geometry,
       scale: 15000,
@@ -65,6 +67,8 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
       const response = await saveTrail({
         variables: { trailName: trailToSave },
       });
+
+      setNotification("Hike added to your list!");
     } catch (err) {
       console.error(err);
     }
@@ -72,6 +76,7 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
 
   return (
     <div className="menu-panel">
+      <h2>Select a hike:</h2>
       <select value={selectedFeature} onChange={handleDropdownChange}>
         <option value="">Select a Hike</option>
         {featureData.map((feature) => (
@@ -90,9 +95,8 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
           >
             I completed this hike!
           </button>
-          {/* <button type="button" className="btn btn-dark btn-menu-panel">
-            Add this hike to my wishlist
-          </button> */}
+          {/* Display the notification component with the message */}
+          {notification && <Notification message={notification} />}
         </div>
       )}
     </div>
