@@ -56,8 +56,67 @@ const Home = () => {
 
         const popupTemplate = new PopupTemplate({
           title: "{hikeName}",
-          content:
-            "<b>Trail Segments:</b> {trailSegments}<br /><b>Distance:</b> {distance}<br /><b>Hiking Time:</b> {hikingTime}<br /><b>Difficulty:</b> {difficulty}<br /><b>Elevation Gain:</b> {elevationGain}<br /><b>Pets Allowed?:</b> {petsAllowed}<br /><b>Activity Fee: </b>{activityFee}<br /><b>Location:</b> {location}<br /><b>Reservations:</b> {reservations}<br /><b>Season:</b> {season}<br /><b>Details:</b> {hikeDescription}",
+          content: [
+            {
+              type: "fields",
+              fieldInfos: [
+                {
+                  fieldName: "trailSegments",
+                  label: "Trail Segments",
+                },
+                {
+                  fieldName: "distance",
+                  label: "Distance",
+                },
+                {
+                  fieldName: "hikingTime",
+                  label: "Hiking Time",
+                },
+                {
+                  fieldName: "difficulty",
+                  label: "Difficulty",
+                },
+                {
+                  fieldName: "elevationGain",
+                  label: "Elevation Gain",
+                },
+                {
+                  fieldName: "petsAllowed",
+                  label: "Pets Allowed?",
+                },
+                {
+                  fieldName: "activityFee",
+                  label: "Activity Fee",
+                },
+                {
+                  fieldName: "location",
+                  label: "Location",
+                },
+                {
+                  fieldName: "reservations",
+                  label: "Reservations",
+                },
+                {
+                  fieldName: "season",
+                  label: "Season",
+                },
+                {
+                  fieldName: "hikeDescription",
+                  label: "Details",
+                },
+              ],
+            },
+            {
+              type: "attachments",
+              attachmentInfos: [
+                {
+                  name: "Trail Map PDF Attachment",
+                  content:
+                    '<a href="{url}" target="_blank">View PDF Attachment</a>',
+                },
+              ],
+            },
+          ],
         });
 
         const shenandoahBoundary = new FeatureLayer({
