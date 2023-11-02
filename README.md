@@ -30,7 +30,7 @@
   <p align="center">
     Find the hike that's just right for you in this intuitive mapping application!
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/KClarkDev/nps-trail-viewer"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://nps-trail-viewer-493315c88a96.herokuapp.com/">View Deployed Application</a>
@@ -91,33 +91,23 @@ To modernize and enhance the accessibility of this information, this project uti
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+See [this](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/api-keys/) documentation for creating a free API key with an ArcGIS Developers account 
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/KClarkDev/nps-trail-viewer.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
+3. Enter your API in `config.json`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,9 +115,7 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+More info coming with Beta version!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -181,9 +169,10 @@ Project Link: [https://github.com/KClarkDev/nps-trail-viewer](https://github.com
 
 ## Acknowledgments
 
-- []()
-- []()
-- []()
+- [Mountain icon by Yusuf Designer from the Noun Project](https://thenounproject.com/icon/mountain-3140105/)
+- [Application inspiration from the Esri hiking trails app](https://github.com/Esri/hiking-trails-app/tree/master)
+- Project initially created as a final project for the [University of Richmond Coding Bootcamp](https://bootcamps.richmond.edu/coding/)
+- Hawksbill Summit splash screen image from Jon Bilous on [Shutterstock](https://www.shutterstock.com/image-photo/evening-view-cliffs-on-hawksbill-summit-149364089)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -192,24 +181,17 @@ Project Link: [https://github.com/KClarkDev/nps-trail-viewer](https://github.com
 
 [contributors-shield]: https://img.shields.io/github/contributors/KClarkDev/nps-trail-viewer.svg?style=for-the-badge
 [contributors-url]: https://github.com/KClarkDev/nps-trail-viewer/graphs/contributors
-
 [forks-shield]: https://img.shields.io/github/forks/KClarkDev/nps-trail-viewer.svg?style=for-the-badge
 [forks-url]: https://github.com/KClarkDev/nps-trail-viewer/network/members
-
 [stars-shield]: https://img.shields.io/github/stars/KClarkDev/nps-trail-viewer.svg?style=for-the-badge
 [stars-url]: https://github.com/KClarkDev/nps-trail-viewer/stargazers
-
 [issues-shield]: https://img.shields.io/github/issues/KClarkDev/nps-trail-viewer.svg?style=for-the-badge
 [issues-url]: https://github.com/KClarkDev/nps-trail-viewer/issues
-
 [license-shield]: https://img.shields.io/github/license/KClarkDev/nps-trail-viewer.svg?style=for-the-badge
 [license-url]: https://github.com/KClarkDev/nps-trail-viewer/blob/main/LICENSE
-
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kclark-gis/
-
 [product-screenshot]: images/screenshot.png
-
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
