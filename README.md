@@ -173,6 +173,7 @@ Project Link: [https://github.com/KClarkDev/nps-trail-viewer](https://github.com
 - Application inspiration from the Esri [hiking trails app](https://github.com/Esri/hiking-trails-app/tree/master)
 - Project initially created as a final project for the [University of Richmond Coding Bootcamp](https://bootcamps.richmond.edu/coding/)
 - Hawksbill Summit splash screen image from Jon Bilous on [Shutterstock](https://www.shutterstock.com/image-photo/evening-view-cliffs-on-hawksbill-summit-149364089)
+- ReadMe template from [othneildrew](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
