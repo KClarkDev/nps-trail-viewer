@@ -50,15 +50,31 @@ const Home = () => {
           url: "https://services6.arcgis.com/cGI8zn9Oo7U9dF6z/arcgis/rest/services/Shenandoah_National_Park_Boundary/FeatureServer",
         });
 
+        const shenandoahParking = new FeatureLayer({
+          url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Parking_Lots/FeatureServer",
+          visible: false, // Initially hide the layer
+        });
         const hikesLayer = new FeatureLayer({
           url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Hikes/FeatureServer",
           renderer: trailRenderer,
         });
         map.add(shenandoahBoundary);
+        map.add(shenandoahParking);
 
         setShenandoahHikesLayer(hikesLayer);
         setMap(map);
         setSceneView(view);
+
+        view.when(function () {
+          // Set the desired zoom level at which the shenandoahParking layer should be visible
+          const desiredZoomLevel = 15;
+
+          // Add a watcher for the view's zoom property
+          view.watch("zoom", function (newZoom) {
+            // Check the current zoom level and set the visibility of shenandoahParking accordingly
+            shenandoahParking.visible = newZoom >= desiredZoomLevel;
+          });
+        });
       }
     );
   }, []); // Empty dependency array ensures this effect runs once when the component mounts

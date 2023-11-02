@@ -26,6 +26,9 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
             geometry: feature.geometry.toJSON(),
           }));
 
+          // Sort the featureData array alphabetically
+          featuresData.sort((a, b) => a.name.localeCompare(b.name));
+
           setFeatureData(featuresData);
         });
       });
@@ -72,6 +75,7 @@ const MenuPanel = ({ shenandoahHikesLayer, sceneView }) => {
 
   return (
     <div className="menu-panel">
+      <h2>Select a hike:</h2>
       <select value={selectedFeature} onChange={handleDropdownChange}>
         <option value="">Select a Hike</option>
         {featureData.map((feature) => (

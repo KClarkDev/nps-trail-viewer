@@ -16,7 +16,12 @@ const AppNavbar = () => {
     <>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand>National Park Hikes</Navbar.Brand>
+          <Navbar.Brand>
+            <span>
+              <img className="brand-icon" src={mtnIcon} alt="Icon" />
+            </span>
+            National Park Hikes
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar" className="d-flex flex-row-reverse">
             <Nav className="ml-auto d-flex">
