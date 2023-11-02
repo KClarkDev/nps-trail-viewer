@@ -19,10 +19,18 @@ const Home = () => {
         "esri/layers/FeatureLayer",
         "esri/renderers/SimpleRenderer",
         "esri/symbols/SimpleLineSymbol",
+        "esri/PopupTemplate",
       ],
       { css: true }
     ).then(
-      ([Map, SceneView, FeatureLayer, SimpleRenderer, SimpleLineSymbol]) => {
+      ([
+        Map,
+        SceneView,
+        FeatureLayer,
+        SimpleRenderer,
+        SimpleLineSymbol,
+        PopupTemplate,
+      ]) => {
         // Create a new map and scene view
         const map = new Map({
           basemap: "topo-vector",
@@ -46,6 +54,12 @@ const Home = () => {
           }),
         });
 
+        const popupTemplate = new PopupTemplate({
+          title: "{hikeName}",
+          content:
+            "<b>Trail Segments:</b> {trailSegments}<br /><b>Distance:</b> {distance}<br /><b>Hiking Time:</b> {hikingTime}<br /><b>Difficulty:</b> {difficulty}<br /><b>Elevation Gain:</b> {elevationGain}<br /><b>Pets Allowed?:</b> {petsAllowed}<br /><b>Activity Fee: </b>{activityFee}<br /><b>Location:</b> {location}<br /><b>Reservations:</b> {reservations}<br /><b>Season:</b> {season}<br /><b>Details:</b> {hikeDescription}",
+        });
+
         const shenandoahBoundary = new FeatureLayer({
           url: "https://services6.arcgis.com/cGI8zn9Oo7U9dF6z/arcgis/rest/services/Shenandoah_National_Park_Boundary/FeatureServer",
         });
@@ -57,6 +71,8 @@ const Home = () => {
         const hikesLayer = new FeatureLayer({
           url: "https://services8.arcgis.com/ppeEwsORWhtYmSAw/arcgis/rest/services/Shenandoah_National_Park_Hikes/FeatureServer",
           renderer: trailRenderer,
+          outFields: ["*"], // Defines the fields to access in the pop-up.
+          popupTemplate: popupTemplate,
         });
         map.add(shenandoahBoundary);
         map.add(shenandoahParking);
@@ -64,6 +80,13 @@ const Home = () => {
         setShenandoahHikesLayer(hikesLayer);
         setMap(map);
         setSceneView(view);
+
+        view.on("click", (event) => {
+          view.popup.open({
+            location: event.mapPoint,
+            fetchFeatures: true, // Fetch features at the clicked location.
+          });
+        });
 
         view.when(function () {
           // Set the desired zoom level at which the shenandoahParking layer should be visible
