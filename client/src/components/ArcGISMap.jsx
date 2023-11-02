@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { loadModules } from "esri-loader";
+import { useEffect, useRef } from "react";
 import "../styles/menuPanel.css";
 
 const ArcGISMap = ({ shenandoahHikesLayer, map, sceneView }) => {
   // used as a ref to reference and access the div element containing the map
   const mapDiv = useRef();
-  // const shenandoahBoundary = new FeatureLayer({
-  //   url: "https://services6.arcgis.com/cGI8zn9Oo7U9dF6z/arcgis/rest/services/Shenandoah_National_Park_Boundary/FeatureServer",
-  // });
 
   useEffect(() => {
     if (map && sceneView && shenandoahHikesLayer) {

@@ -2,15 +2,13 @@ const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
-  // retrieves a specific user by their username. Includes the user's saved trails when returning the data
+  // retrieves a specific user by their username. Includes the user's saved trails when returning the data, omits their password
   Query: {
     getUser: async (parent, args, context) => {
-      console.log("context.user for getUser:", context.user);
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
         );
-        console.log(userData);
         return userData;
       }
 
@@ -20,7 +18,7 @@ const resolvers = {
 
   Mutation: {
     login: async (parent, { email, password }, context) => {
-      // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
+      // Look up the user by the provided email address
       const user = await User.findOne({ email });
 
       // If there is no user with that email address, return an Authentication error
@@ -51,9 +49,6 @@ const resolvers = {
       return { token, user };
     },
     saveTrail: async (parent, args, context) => {
-      console.log("context.user: for saveTrail", context.user);
-      console.log("HERE ARE THE ARGS");
-      console.log(args);
       if (context.user) {
         const { trailName, parkName } = args;
         const updatedUser = await User.findOneAndUpdate(
@@ -61,7 +56,6 @@ const resolvers = {
           { $addToSet: { savedTrails: { trailName, parkName } } },
           { new: true }
         );
-        console.log(updatedUser);
         return updatedUser;
       }
 
@@ -69,7 +63,6 @@ const resolvers = {
     },
 
     removeTrail: async (parent, args, context) => {
-      console.log("context.user for removeTrail:", context.user);
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },

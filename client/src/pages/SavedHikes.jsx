@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar";
 import "../styles/myHikes.css";
-import { useState, useEffect } from "react";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import { useQuery, useMutation } from "@apollo/client";
@@ -73,29 +72,3 @@ export default function SavedHikes() {
     </div>
   );
 }
-
-// export default SavedBooks;
-//   return (
-//     <div>
-//       <Navbar />
-//       <div className="hikes-container">
-//         <h1>Completed Hikes</h1>
-//         <ul class="list-group">
-//           <li className="list-group-item">An item</li>
-//           <li className="list-group-item">A second item</li>
-//           <li className="list-group-item">A third item</li>
-//           <li className="list-group-item">A fourth item</li>
-//           <li className="list-group-item">And a fifth one</li>
-//         </ul>
-//         <h1>Future Hikes</h1>
-//         <ul class="list-group">
-//           <li className="list-group-item">An item</li>
-//           <li className="list-group-item">A second item</li>
-//           <li className="list-group-item">A third item</li>
-//           <li className="list-group-item">A fourth item</li>
-//           <li className="list-group-item">And a fifth one</li>
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// }
