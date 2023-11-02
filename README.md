@@ -21,23 +21,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/KClarkDev/nps-trail-viewer">
     <img src="client\src\assets\mountainIconBlack.png" alt="Logo" height="80">
   </a>
 
 <h3 align="center">NPS Trail Viewer</h3>
 
   <p align="center">
-    project_description
+    Find the hike that's just right for you in this intuitive mapping application!
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://nps-trail-viewer-493315c88a96.herokuapp.com/">View Deployed Application</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/KClarkDev/nps-trail-viewer/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/KClarkDev/nps-trail-viewer/issues">Request Feature</a>
   </p>
 </div>
 
@@ -71,9 +71,12 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![image](https://github.com/KClarkDev/nps-trail-viewer/assets/60265279/e277c1f0-de14-4499-bd92-368554cd72ec)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+
+This project aims to address the existing challenges related to accessing and visualizing hiking trail data for National Parks in the United States. Currently, a wealth of information is spread across separate web pages, making it difficult for users to obtain a comprehensive view of the available trails. Additionally, while geospatial data for trails exists, it is not easily accessible or presented in a user-friendly manner.
+
+To modernize and enhance the accessibility of this information, this project utilizes the power of Geographic Information Systems (GIS). GIS technology allows for a centralized interface that consolidates existing trail data, making it easily accessible to users in one unified platform. This project will ultimately enable hikers to make the most informed decision in order to have a safe and enjoyable hiking experience that's right for them!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
