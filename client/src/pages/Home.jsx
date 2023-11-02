@@ -20,6 +20,7 @@ const Home = () => {
         "esri/renderers/SimpleRenderer",
         "esri/symbols/SimpleLineSymbol",
         "esri/PopupTemplate",
+        "esri/widgets/Home",
       ],
       { css: true }
     ).then(
@@ -30,6 +31,7 @@ const Home = () => {
         SimpleRenderer,
         SimpleLineSymbol,
         PopupTemplate,
+        Home,
       ]) => {
         // Create a new map and scene view
         const map = new Map({
@@ -46,6 +48,13 @@ const Home = () => {
           zoom: 10,
           center: [-78.45, 38.47], // long, lat (Shenandoah National Park)
         });
+
+        const homeBtn = new Home({
+          view: view,
+        });
+
+        // Add the home button to the top left corner of the view
+        view.ui.add(homeBtn, "top-left");
 
         const trailRenderer = new SimpleRenderer({
           symbol: new SimpleLineSymbol({
