@@ -18,6 +18,7 @@ const Home = () => {
         "esri/views/SceneView",
         "esri/layers/FeatureLayer",
         "esri/renderers/SimpleRenderer",
+        "esri/renderers/UniqueValueRenderer",
         "esri/symbols/SimpleLineSymbol",
         "esri/PopupTemplate",
         "esri/widgets/Home",
@@ -29,6 +30,7 @@ const Home = () => {
         SceneView,
         FeatureLayer,
         SimpleRenderer,
+        UniqueValueRenderer,
         SimpleLineSymbol,
         PopupTemplate,
         Home,
@@ -55,13 +57,6 @@ const Home = () => {
 
         // Add the home button to the top left corner of the view
         view.ui.add(homeBtn, "top-left");
-
-        const trailRenderer = new SimpleRenderer({
-          symbol: new SimpleLineSymbol({
-            color: [128, 0, 32], // Burgundy color
-            width: 2,
-          }),
-        });
 
         const popupTemplate = new PopupTemplate({
           title: "{hikeName}",
@@ -126,6 +121,50 @@ const Home = () => {
               ],
             },
           ],
+        });
+
+        // Define symbology for unique values for hiking trails layer
+        const uniqueValues = [
+          {
+            value: "Easiest",
+            symbol: new SimpleLineSymbol({
+              color: [0, 102, 0], // Dark green
+              width: 2,
+            }),
+          },
+          {
+            value: "Moderate",
+            symbol: new SimpleLineSymbol({
+              color: [255, 255, 0], // Yellow
+              width: 2,
+            }),
+          },
+          {
+            value: "Moderately Strenuous",
+            symbol: new SimpleLineSymbol({
+              color: [255, 102, 0], // Orange
+              width: 2,
+            }),
+          },
+          {
+            value: "Strenuous",
+            symbol: new SimpleLineSymbol({
+              color: [255, 0, 0], // Red
+              width: 2,
+            }),
+          },
+          {
+            value: "Very Strenuous",
+            symbol: new SimpleLineSymbol({
+              color: [51, 0, 0], // Dark purple
+              width: 2,
+            }),
+          },
+        ];
+
+        const trailRenderer = new UniqueValueRenderer({
+          field: "difficulty",
+          uniqueValueInfos: uniqueValues,
         });
 
         const shenandoahBoundary = new FeatureLayer({
